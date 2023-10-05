@@ -16,9 +16,6 @@ mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-
-
-
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use('/authors', authorController);
@@ -36,7 +33,6 @@ app.get('/', (req, res) => {
 db.on('connected', () => console.log(`DATABASE is connected`));
 db.on('disconnected', () => console.log(`Database is disconnected`));
 db.on('error', (err) => console.log(err.message, + ' is db configured, right?'))
-
 //Listeners...
 app.listen(PORT, () => {
     console.log('====================================');

@@ -5,7 +5,15 @@ const router = express.Router();
 
 //Index Router
 router.get('/', (req, res) => {
-    res.render('authors/index.ejs')
+    Author.find({})
+    .then((foundAurthors) => {
+        res.render('authors/index.ejs', {
+            authors : foundAurthors
+        })
+    })
+    .catch((err) => {
+        res.status(501).json(err.message)
+    })
 })
 
 //New Router

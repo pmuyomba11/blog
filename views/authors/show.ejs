@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Blog</title>
+</head>
+
+<body>
+    <header>
+        <h2> Page for <%= author.name %>
+        </h2>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/authors">Authors index</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Author Attribute: </h2>
+            <ul>
+                <li>
+                    Name: <%= author.name %>
+                    <form action="/authors/<%= author._id %>?_method=DELETE" method="post">
+                        <input type="submit" value="Delete">
+                    </form>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <a href="/authors/<%= author._id %>/edit">Edit</a>
+        </section>
+    </main>
+</body>
+
+</html>

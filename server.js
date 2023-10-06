@@ -3,6 +3,7 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 const authorController = require('./controllers/authors');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const colors = require('colors');
 const morgan = require('morgan');
 const e = require('express');
@@ -18,6 +19,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 });
 //Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use('/authors', authorController);
 app.use(morgan('dev'));
 
